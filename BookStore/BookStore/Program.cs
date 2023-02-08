@@ -1,9 +1,11 @@
-using Microsoft.AspNetCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add Mvc to project
 builder.Services.AddMvc();
+
+// Add Runtime compilation
+builder.Services.AddRazorPages().AddRazorRuntimeCompilation();
 
 var app = builder.Build();
 
