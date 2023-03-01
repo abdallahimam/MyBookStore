@@ -1,0 +1,103 @@
+﻿@using BookStore.Repositories;
+@model BookModel
+@inject ILanguageRepository _langRepo
+@{
+    ViewData["Title"] = "Create";
+}
+
+<div class="container">
+    @if (ViewBag.isSuccess == true)
+    {
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            <strong>Success!</strong> Your new book was added successfully. <br />
+            Click <a asp-area="Book" asp-action="Details" asp-route-id="@ViewBag.bookId">here</a> to see more details.
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    }
+   <div class="d-flex justify-content-center">
+      <div class="spinner-border" role="status" id="formLoading" style="display:none;">
+         <span class="visually-hidden">Loading...</span>
+      </div>
+   </div>
+    <h3 class="display-4">Add New Book</h3>
+   <form method="post" enctype="multipart/form-data" data-ajax="flase"
+         data-ajax-success="formSuccess"
+         data-ajax-loading="#formLoading"
+         asp-action="Create" 
+         asp-controller="Book">
+
+      <div asp-validation-summary="All" class="text-danger"></div>
+      <div class="mb-2">
+         <label asp-for="Title"></label>
+         <input asp-for="Title" class="form-control" />
+         <span asp-validation-for="Title" class="text-danger"></span>
+      </div>
+      <div class="mb-2">
+         <label asp-for="Author"></label>
+         <input asp-for="Author" class="form-control" />
+         <span asp-validation-for="Author" class="text-danger"></span>
+      </div>
+      <div class="mb-2">
+         <label asp-for="Description"></label>
+         <textarea asp-for="Description" class="form-control"></textarea>
+         <span asp-validation-for="Description" class="text-danger"></span>
+      </div>
+      <div class="mb-2">
+         <label asp-for="TotalPages"></label>
+         <input asp-for="TotalPages" class="form-control" />
+         <span asp-validation-for="TotalPages" class="text-danger"></span>
+      </div>
+      <div class="mb-2">
+         <label asp-for="LanguageId"></label>
+         <select asp-for="LanguageId" class="form-control"
+                 asp-items="(await _langRepo.GetLanguages()).Select(x => new SelectListItem(){ Text = x.Name, Value = x.Id.ToString()})">
+            <option value="">Please select a language</option>
+         </select>
+         <span asp-validation-for="LanguageId" class="text-danger"></span>
+      </div>
+      <div class="mb-2">
+         <label asp-for="Cover" class="form-label">Default file input example</label>
+         <input asp-for="Cover" class="form-control">
+         <span asp-validation-for="Cover" class="text-danger"></span>
+      </div>
+      <div class="mb-2">
+         <label asp-for="GalleryFiles" class="form-label">Default file input example</label>
+         <input asp-for="GalleryFiles" class="form-control" multiple>
+         <span asp-validation-for="GalleryFiles" class="text-danger"></span>
+      </div>
+      <div class="mb-2">
+         <label asp-for="BookPdf" class="form-label">Default file input example</label>
+         <input asp-for="BookPdf" class="form-control" id="bookPdfFile">
+         <span asp-validation-for="BookPdf" class="text-danger"></span>
+      </div>
+      <div class="mb-2">
+         <label asp-for="CategoryM"></label>
+         <select asp-for="CategoryM" class="form-control" asp-items="ViewBag.CategoryM" multiple>
+            <option value="">Please select a language</option>
+         </select>
+         <span asp-validation-for="CategoryM" class="text-danger"></span>
+      </div>
+      <div class="mb-2">
+         <label asp-for="LanguageEnum"></label>
+         <select asp-for="LanguageEnum" class="form-control" asp-items="Html.GetEnumSelectList<LanguageEnum>()">
+            <option value="">Please select a language</option>
+         </select>
+         <span asp-validation-for="LanguageEnum" class="text-danger"></span>
+      </div>
+      <div class="mb-2">
+         <input type="submit" value="Add Book" class="btn btn-primary form-control" />
+      </div>
+   </form>
+</div>
+
+@section scripts {
+   <script>
+      function formSuccess(data) {
+         alert("Form success");
+      }
+
+       function formLoading(data) {
+           
+       }
+   </script>
+}

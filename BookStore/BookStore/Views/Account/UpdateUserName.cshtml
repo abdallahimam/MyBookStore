@@ -1,0 +1,38 @@
+﻿@model UpdateUserNameModel
+@{
+    ViewData["Title"] = "Update User Name";
+}
+
+<div class="container">
+   <div class="row">
+      <div class="col-4">
+      @if (ViewBag.isSuccess == true)
+      {
+         <div class="alert alert-success alert-dismissible fade show" role="alert">
+            <strong>Success!</strong> Your first and last name was updated successfully. <br />
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+         </div>
+      }
+         <h3 class="mb-4">Update User Name</h3>
+         <form method="post" asp-action="UpdateUserName" asp-controller="Account">
+            <div asp-validation-summary="All" class="text-danger"></div>
+            <div class="mb-3">
+               <label asp-for="FirstName"></label>
+               <input asp-for="FirstName" class="form-control" />
+               <span asp-validation-for="FirstName" class="text-danger"></span>
+            </div>
+            <div class="mb-3">
+               <label asp-for="LastName"></label>
+               <input asp-for="LastName" class="form-control" />
+               <span asp-validation-for="LastName" class="text-danger"></span>
+            </div>
+            <div class="mb-3">
+               <input type="submit" value="Update" class="btn btn-primary form-control" />
+            </div>
+         </form>
+      </div>
+      <div class="col-8">
+         <img src="~/images/abdo.jpg" class="img-fluid img-thumbnail rounded-circle" />
+      </div>
+   </div>
+</div>

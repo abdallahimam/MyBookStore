@@ -1,1 +1,16 @@
-﻿<h1>All Books</h1>
+﻿@{
+    ViewData["Title"] = "Books";
+}
+@model IEnumerable<BookModel>
+
+<div class="container">
+   <h3 class="display-4">All books</h3>
+   <div class="row">
+        @foreach (var book in Model)
+        {
+          <div class="col-md-4">
+             @(await Html.PartialAsync("_bookThumbnail", book))
+          </div>
+        }
+   </div>
+</div>

@@ -1,0 +1,67 @@
+﻿@using BookStore.Repositories;
+@model SignInUserModel
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html>
+<head>
+   <meta name="viewport" content="width=device-width" />
+   <title>Login | Book Store App</title>
+   <link href="~/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+   <link href="~/css/style.css" rel="stylesheet" />
+</head>
+<body>
+   <partial name="_header" />
+   <main role="main">
+      <div class="container">
+         <div class="row">
+            <div class="col-4">
+               @if (ViewBag.IsPasswordReset == true)
+               {
+                  <div class="alert alert-success alert-dismissible fade show" role="alert">
+                     <strong>Congratulation!</strong> The password was updated successfully. <br />
+                     <a asp-controller="Account" asp-action="Signin" class="btn btn-outline-primary">Login</a>
+                  </div>
+               }
+               <h3 class="display-3 mb-4">Login</h3>
+               <form method="post">
+                  <div asp-validation-summary="All" class="text-danger"></div>
+                  
+                  <div class="mb-3">
+                     <label asp-for="Email"></label>
+                     <input asp-for="Email" class="form-control" />
+                     <span asp-validation-for="Email" class="text-danger"></span>
+                  </div>
+                  <div class="mb-3">
+                     <label asp-for="Password"></label>
+                     <input asp-for="Password" class="form-control" />
+                     <span asp-validation-for="Password" class="text-danger"></span>
+                  </div>
+                  <div class="mb-3 form-check">
+                     <input class="form-check-input" asp-for="RememberMe">
+                     <label class="form-check-label" asp-for="RememberMe"></label>
+                  </div>
+                  <div class="mb-3">
+                     <input type="submit" value="Login" class="btn btn-primary form-control" />
+                  </div>
+               </form>
+               <div>
+                  <a asp-controller="Account" asp-action="ForgotPassword">Forgot Password?</a>
+               </div>
+            </div>
+            <div class="col-8">
+               <img src="~/images/abdo.jpg" class="img-fluid img-thumbnail rounded-circle" />
+            </div>
+         </div>
+      </div>
+   </main>
+   <footer class="border-top footer text-muted text-center">
+      <div class="container">
+         Copyright &copy; Book Store @DateTime.Now.Year
+         <custom-email url="https://github.com/"></custom-email>
+      </div>
+   </footer>
+   <script src="~/lib/bootstrap/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

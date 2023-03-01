@@ -1,0 +1,31 @@
+﻿@model EmailConfirmationModel
+@{
+    ViewData["Title"] = "Email Confirmation";
+}
+
+<div class="container">
+   <div class="row">
+      <div class="col-4 offset-4">
+      @if (Model.EmailVerified == true)
+      {
+         <div class="alert alert-success" role="alert">
+            <strong>Success!</strong> Your email was confirmed successfully. <br />
+            <a asp-action="Index" asp-controller="Home" class="link-primary">Home Page</a>
+         </div>
+         }
+         else
+         {
+            <h5>Email sent to your registered email id!</h5>
+            <h5>Go to the mail inbox to confirm</h5>
+            <h5>if you didn't have recieve any email</h5>
+            <h5>Click in the following link to resend again</h5>
+            <form asp-action="ConfirmEmail">
+               <input type="hidden" asp-for="Email" />
+               <div class="">
+                  <input type="submit" value="Resend Confirmation Email" class="btn btn-primary d-block" />
+               </div>
+            </form>
+         }
+      </div>
+   </div>
+</div>

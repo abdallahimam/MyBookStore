@@ -1,0 +1,31 @@
+﻿@inject Microsoft.AspNetCore.Identity.SignInManager<BookStore.Data.ApplicationUser> _signInManager;
+
+@if (_signInManager.IsSignedIn(User))
+{
+   var user = await _signInManager.UserManager.GetUserAsync(User);
+    var name = string.Concat(user.FirstName, " ", user.LastName);
+
+<li class="nav-item dropdown">
+    <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">
+       @name
+@*       @string.Concat(User.FindFirst("FirstName").Value, User.FindFirst("LastName").Value)
+*@
+   </a>
+    <ul class="dropdown-menu">
+      <li>
+         <form asp-action="Logout" asp-controller="Account" method="post" class="dropdown-item">
+            <input type="submit" value="Logout" class="dropdown-item" />
+         </form>
+         <a asp-controller="Account" asp-action="ChangePassword" class="dropdown-item">Change Password</a>
+         <a asp-controller="Account" asp-action="UpdateUserName" class="dropdown-item">Update User Name</a>
+      </li>
+    </ul>
+    </li>
+}
+else
+{
+   <li class="nav-item">
+      <a asp-controller="Account" asp-action="Signin" class="btn btn-outline-primary">Login</a>
+      <a asp-controller="Account" asp-action="Signup" class="btn btn-primary">Register</a>
+   </li>
+}
