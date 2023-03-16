@@ -11,5 +11,10 @@ namespace BookStoreApi.Repositories
 		Task<int> UpdateBookAsync(int id, BookModel bookModel);
 		Task<int> UpdateBookPatchAsync(int id, JsonPatchDocument bookModel);
 		Task DeleteBookAsync(int id);
+		Task<IEnumerable<BookModel>> GetBooksByAuthorAsync(int authorId);
+		Task<IEnumerable<BookModel>> GetBooksByPublisherAsync(int publisherId);
+		Task<IEnumerable<BookModel>> GetBooksByLanguageAsync(int languageId);
+		Task<IEnumerable<BookModel>> GetBooksBySectionAsync(int sectionId);
+		Task<IEnumerable<BookModel>> GetBooksByCategoryAsync(int categoryId);
 	}
 }

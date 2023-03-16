@@ -23,6 +23,12 @@ namespace BookStoreApi.Repositories
 			return _mapper.Map<List<SectionModel>>(records);
 		}
 
+		public async Task<IEnumerable<SectionModel>> GetSectionsByCategoryAsync(int categoryId)
+		{
+			var records = await _context.Sections.Where(s => s.CategoryId == categoryId).ToListAsync();
+			return _mapper.Map<List<SectionModel>>(records);
+		}
+
 		public async Task<SectionModel> GetByIdAsync(int id)
 		{
 			var section = await _context.Sections.FindAsync(id);

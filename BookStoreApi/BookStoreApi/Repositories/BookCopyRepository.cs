@@ -32,7 +32,7 @@ namespace BookStoreApi.Repositories
 
 		public async Task<IEnumerable<BookCopyModel>> GetBookCopiesByBookIdAsync(int bookId)
 		{
-			var records = await _context.BookCopies.Select(bc => bc.BookId == bookId).ToListAsync();
+			var records = await _context.BookCopies.Where(bc => bc.BookId == bookId).ToListAsync();
 			return _mapper.Map<List<BookCopyModel>>(records);
 		}
 

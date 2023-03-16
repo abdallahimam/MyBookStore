@@ -25,6 +25,13 @@ namespace BookStoreApi.Controllers
 			return Ok(records);
 		}
 
+		[HttpGet("~/api/categories/{categoryId}/sections")]
+		public async Task<IActionResult> GetSectionsByCategory(int categoryId)
+		{
+			var records = await _sectionRepository.GetSectionsByCategoryAsync(categoryId);
+			return Ok(records);
+		}
+
 		[HttpGet("{id}")]
 		public async Task<IActionResult> GetSectionById([FromRoute] int id) 
 		{ 

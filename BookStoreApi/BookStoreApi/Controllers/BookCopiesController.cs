@@ -26,7 +26,7 @@ namespace BookStoreApi.Controllers
 			return Ok(records);
 		}
 
-		[HttpGet("{bookid}")]
+		[HttpGet("~/api/books/{bookid}/bookcopies")]
 		public async Task<IActionResult> GetBookCopiesByBookId([FromRoute] int bookid) 
 		{ 
 			var records = await _bookCopyRepository.GetBookCopiesByBookIdAsync(bookid);

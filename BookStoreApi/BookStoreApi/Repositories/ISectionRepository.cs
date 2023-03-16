@@ -11,5 +11,6 @@ namespace BookStoreApi.Repositories
 		Task<SectionModel> GetByIdAsync(int id);
 		Task<int> UpdateAsync(int id, SectionModel sectionModel);
 		Task<int> UpdatePatchAsync(int id, JsonPatchDocument sectionModel);
+		Task<IEnumerable<SectionModel>> GetSectionsByCategoryAsync(int categoryId);
 	}
 }

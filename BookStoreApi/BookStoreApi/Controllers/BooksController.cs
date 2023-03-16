@@ -65,5 +65,40 @@ namespace BookStoreApi.Controllers
 			await _bookRepository.DeleteBookAsync(id);
 			return Ok();
 		}
+
+		[HttpGet("~/api/authors/{authorId}/books")]
+		public async Task<IActionResult> GetBooksByAuthor(int authorId)
+		{
+			var books = await _bookRepository.GetBooksByAuthorAsync(authorId);
+			return Ok(books);
+		}
+
+		[HttpGet("~/api/publishers/{publisherId}/books")]
+		public async Task<IActionResult> GetBooksByPublisher(int publisherId)
+		{
+			var books = await _bookRepository.GetBooksByPublisherAsync(publisherId);
+			return Ok(books);
+		}
+
+		[HttpGet("~/api/languages/{languageId}/books")]
+		public async Task<IActionResult> GetBooksByLanguage(int languageId)
+		{
+			var books = await _bookRepository.GetBooksByLanguageAsync(languageId);
+			return Ok(books);
+		}
+
+		[HttpGet("~/api/sections/{sectionId}/books")]
+		public async Task<IActionResult> GetBooksBySection(int sectionId)
+		{
+			var books = await _bookRepository.GetBooksBySectionAsync(sectionId);
+			return Ok(books);
+		}
+
+		[HttpGet("~/api/categories/{categoryId}/books")]
+		public async Task<IActionResult> GetBooksByCategory(int categoryId)
+		{
+			var books = await _bookRepository.GetBooksByCategoryAsync(categoryId);
+			return Ok(books);
+		}
 	}
 }

@@ -26,7 +26,7 @@ namespace BookStoreApi.Controllers
 			return Ok(records);
 		}
 
-		[HttpGet("{bookid}")]
+		[HttpGet("~/api/books/{bookid}/ebooks")]
 		public async Task<IActionResult> GetEBooksByBookId([FromRoute] int bookid) 
 		{ 
 			var records = await _eBookRepository.GetEBooksByBookIdAsync(bookid);

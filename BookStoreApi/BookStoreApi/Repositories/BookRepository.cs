@@ -30,7 +30,72 @@ namespace BookStoreApi.Repositories
 			return _mapper.Map<List<BookModel>>(records);
 		}
 
-		
+		public async Task<IEnumerable<BookModel>> GetBooksByAuthorAsync(int authorId)
+		{
+			var records = await _context.Books
+				.Include(p => p.Publisher)
+				.Include(l => l.Language)
+				.Include(s => s.Section).ThenInclude(c => c.Category)
+				.Include(eb => eb.EBooks)
+				.Include(bc => bc.BookCopies)
+				.Where(b => b.AuthorId == authorId)
+				.ToListAsync();
+			return _mapper.Map<List<BookModel>>(records);
+		}
+
+		public async Task<IEnumerable<BookModel>> GetBooksByPublisherAsync(int publisherId)
+		{
+			var records = await _context.Books
+				.Include(a => a.Author)
+				.Include(l => l.Language)
+				.Include(s => s.Section).ThenInclude(c => c.Category)
+				.Include(eb => eb.EBooks)
+				.Include(bc => bc.BookCopies)
+				.Where(b => b.PublisherId == publisherId)
+				.ToListAsync();
+			return _mapper.Map<List<BookModel>>(records);
+		}
+
+		public async Task<IEnumerable<BookModel>> GetBooksByLanguageAsync(int languageId)
+		{
+			var records = await _context.Books
+				.Include(a => a.Author)
+				.Include(p => p.Publisher)
+				.Include(s => s.Section).ThenInclude(c => c.Category)
+				.Include(eb => eb.EBooks)
+				.Include(bc => bc.BookCopies)
+				.Where(b => b.LanguageId == languageId)
+				.ToListAsync();
+			return _mapper.Map<List<BookModel>>(records);
+		}
+
+		public async Task<IEnumerable<BookModel>> GetBooksBySectionAsync(int sectionId)
+		{
+			var records = await _context.Books
+				.Include(a => a.Author)
+				.Include(p => p.Publisher)
+				.Include(l => l.Language)
+				.Include(eb => eb.EBooks)
+				.Include(bc => bc.BookCopies)
+				.Where(b => b.SectionId == sectionId)
+				.ToListAsync();
+			return _mapper.Map<List<BookModel>>(records);
+		}
+
+		public async Task<IEnumerable<BookModel>> GetBooksByCategoryAsync(int categoryId)
+		{
+			var records = await _context.Books
+				.Include(a => a.Author)
+				.Include(p => p.Publisher)
+				.Include(l => l.Language)
+				.Include(s => s.Section).ThenInclude(c => c.Category)
+				.Include(eb => eb.EBooks)
+				.Include(bc => bc.BookCopies)
+				.Where(b => b.Section.CategoryId == categoryId)
+				.ToListAsync();
+			return _mapper.Map<List<BookModel>>(records);
+		}
+
 		public async Task<BookModel> GetByIdAsync(int id)
 		{
 			var book = await _context.Books
