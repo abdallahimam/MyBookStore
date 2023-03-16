@@ -8,3 +8,6 @@
 /BookStore/BookStore/obj
 /BookStore/BookStore/wwwroot/lib
 /BookStore/BookStore/bin/Release/net7.0
+/BookStoreApi/.vs
+/BookStoreApi/BookStoreApi/bin/Debug/net7.0
+/MyBookStoreApi
