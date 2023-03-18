@@ -12,3 +12,49 @@ this repositore consists of 3 inner repository:
     - ~/api/books                      => post new book               => post
     - ~/api/books{id}                  => update book                 => put
     - ~/api/books{id}                  => delete book                 => delete
+    - ~/api/categories                      => get all categories               => get
+    - ~/api/categories/{id}                 => get category by categoryid          => get
+    - ~/api/categories                      => post new category               => post
+    - ~/api/categories{id}                  => update category                 => put
+    - ~/api/categories{id}                  => delete category                 => delete
+    - ~/api/categories/{categoryId}/sections                      => get all sections in the category               => get
+    - ~/api/sections                      => get all sections               => get
+    - ~/api/sections/{id}                 => get section by sectionid          => get
+    - ~/api/sections                      => post new section               => post
+    - ~/api/sections{id}                  => update section                 => put
+    - ~/api/sections{id}                  => delete section                 => delete
+    - ~/api/publishers                      => get all publishers               => get
+    - ~/api/publishers/{id}                 => get publisher by publisherid          => get
+    - ~/api/publishers                      => post new publisher               => post
+    - ~/api/publishers{id}                  => update publisher                 => put
+    - ~/api/publishers{id}                  => delete publisher                 => delete
+    - ~/api/authors                      => get all authors               => get
+    - ~/api/authors/{id}                 => get author by authorid          => get
+    - ~/api/authors                      => post new author               => post
+    - ~/api/authors{id}                  => update author                 => put
+    - ~/api/authors{id}                  => delete author                 => delete
+    - ~/api/languages                      => get all languages               => get
+    - ~/api/languages/{id}                 => get language by languageid          => get
+    - ~/api/languages                      => post new language               => post
+    - ~/api/languages{id}                  => update language                 => put
+    - ~/api/languages{id}                  => delete language                 => delete
+    - ~/api/books                      => get all books               => get
+    - ~/api/books/{id}                 => get book by bookid          => get
+    - ~/api/languages/{languageid}/books                      => get all books by languageid               => get
+    - ~/api/authors/{authorid}/books                      => get all books by authorid               => get
+    - ~/api/publishers/{publisherid}/books                      => get all books by publisherid               => get
+    - ~/api/sections/{sectionid}/books                      => get all books by sectionid               => get
+    - ~/api/categories/{categoryid}/books                      => get all books by categoryid               => get
+    - ~/api/books                      => post new book               => post
+    - ~/api/books{id}                  => update book                 => put
+    - ~/api/books{id}                  => delete book                 => delete
+    - ~/api/ebooks                      => get all ebooks               => get
+    - ~/api/ebooks/{id}                 => get ebook by ebookid          => get
+    - ~/api/ebooks                      => post new ebook               => post
+    - ~/api/ebooks{id}                  => update ebook                 => put
+    - ~/api/ebooks{id}                  => delete ebook                 => delete
+    - ~/api/bookcopies                      => get all bookcopies               => get
+    - ~/api/bookcopies/{id}                 => get ebook by bookcopyid          => get
+    - ~/api/bookcopies                      => post new bookcopy               => post
+    - ~/api/bookcopies{id}                  => update bookcopy                 => put
+    - ~/api/bookcopies{id}                  => delete bookcopy                 => delete
